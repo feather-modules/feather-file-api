@@ -11,7 +11,7 @@ import XCTest
 
 final class FileAPIKitTests: XCTestCase {
 
-    func testExample() async throws {
-        XCTAssertTrue(true)
-    }
+  func testExample() async throws {
+    XCTAssertTrue(true)
+  }
 }
