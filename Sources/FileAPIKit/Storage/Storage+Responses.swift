@@ -3,47 +3,40 @@ import OpenAPIKit
 
 extension File.Storage {
 
-  enum Responses {
+    enum Responses {
 
-    //TODO: binary response definition in openapi-kit?
-    enum Download: Response {
-      static let description = "Download response"
+        enum Download: BinaryResponse {
+            static let description = "Download response"
+        }
 
-      static func openAPIResponse() -> OpenAPIKit.OpenAPI.Response {
-        .init(
-          description: description,
-          headers: openAPIHeaderMap(),
-          content: [
-            .any: .init(
-              schema: .string(
-                contentEncoding: .binary
-              )
-            )
-          ]
-        )
+        enum SimpleDetail: JSONResponse {
+            static let description = "Simple file detail object"
+            static let schema: Schema.Type = Schemas.SimpleDetail.self
+        }
 
-        //TODO: openAPIHeaderMap override in protocol? openAPIContentMap override in protocol?
-        //                .init(
-        //                    description: description,
-        //                    headers: openAPIHeaderMap(),
-        //                    content: openAPIContentMap()
-        //                )
-      }
+        enum UploadChunkedDetail: JSONResponse {
+            static let description = "Chunked file detail object"
+            static let schema: Schema.Type = Schemas.UploadChunkedDetail.self
+        }
+
+        enum FinishChunkedDetail: JSONResponse {
+            static let description = "Chunked file detail object"
+            static let schema: Schema.Type = Schemas.FinishChunkedDetail.self
+        }
+
+        enum ChunkDetail: JSONResponse {
+            static let description = "Chunked chunk detail object"
+            static let schema: Schema.Type = Schemas.ChunkDetail.self
+        }
+
+        enum UploadList: JSONResponse {
+            static let description = "Upload list object"
+            static let schema: Schema.Type = Schemas.UploadList.self
+        }
+
+        enum ChunkList: JSONResponse {
+            static let description = "Chunk list object"
+            static let schema: Schema.Type = Schemas.ChunkList.self
+        }
     }
-
-    enum SimpleDetail: JSONResponse {
-      static let description = "Simple file detail object"
-      static let schema: Schema.Type = Schemas.SimpleDetail.self
-    }
-
-    enum ChunkedDetail: JSONResponse {
-      static let description = "Chunked file detail object"
-      static let schema: Schema.Type = Schemas.ChunkedDetail.self
-    }
-
-    enum ChunkedChunk: JSONResponse {
-      static let description = "Chunked chunk details object"
-      static let schema: Schema.Type = Schemas.ChunkedChunk.self
-    }
-  }
 }

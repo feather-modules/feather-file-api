@@ -3,48 +3,73 @@ import OpenAPIKit
 
 extension File.Storage {
 
-  enum Schemas {
+    enum Schemas {
 
-    enum Id: IDSchema {
-      static let description = "File unique identifier"
-    }
+        enum Id: IDSchema {
+            static let description = "File identifier"
+        }
 
-    enum DownloadHeader: TextSchema {
-      static let description = "Download request header"
-      static let examples = [
-        "bytes=0-1023"
-      ]
-    }
+        enum UploadId: IDSchema {
+            static let description = "Upload identifier"
+        }
 
-    enum SimpleDetail: ObjectSchema {
-      static let properties: [ObjectSchemaProperty] = [
-        .init("id", Id.self)
-      ]
-      static let description = "Simple detail"
-    }
+        enum DownloadRequestHeader: TextSchema {
+            static let description = "Download request header"
+            static let examples = [
+                "bytes=0-1023"
+            ]
+        }
 
-    enum ChunkedDetail: ObjectSchema {
-      static let properties: [ObjectSchemaProperty] = [] + SimpleDetail.properties
-      static let description = "Chunked detail"
-    }
+        enum SimpleDetail: ObjectSchema {
+            static let properties: [ObjectSchemaProperty] = [
+                .init("fileId", Id.self)
+            ]
+            static let description = "Simple detail"
+        }
 
-    enum ChunkedChunk: ObjectSchema {
-      static let properties: [ObjectSchemaProperty] = [
-        .init("id", Id.self),
-        .init("number", ChunkNumber.self),
-      ]
-      static let description = "A Chunk of Chunked File"
-    }
+        enum FinishChunkedDetail: ObjectSchema {
+            static let properties: [ObjectSchemaProperty] = [
+                .init("fileId", Id.self)
+            ]
+            static let description = "Chunked detail"
+        }
 
-    enum ChunkedFinish: ArraySchema {
-      static let items: Schema.Type = ChunkedDetail.self
-      static let description = "Chunked finish"
-    }
+        enum UploadChunkedDetail: ObjectSchema {
+            static let properties: [ObjectSchemaProperty] = [
+                .init("uploadId", UploadId.self)
+            ]
+            static let description = "Chunked detail"
+        }
 
-    enum ChunkNumber: IntSchema {
-      static let minimum = 0
-      static let maximum = 1000  //TODO: enough?
-      static let description = "The number of the chunk"
+        enum ChunkDetail: ObjectSchema {
+            static let properties: [ObjectSchemaProperty] = [
+                .init("uploadId", UploadId.self),
+                .init("chunkNumber", ChunkNumber.self),
+            ]
+            static let description = "Chunk detail"
+        }
+
+        enum UploadListItem: ObjectSchema {
+            static let properties: [ObjectSchemaProperty] = [
+                .init("uploadId", UploadId.self)
+            ]
+            static let description = "Upload list item"
+        }
+
+        enum UploadList: ArraySchema {
+            static let items: Schema.Type = UploadListItem.self
+            static let description = "Upload list"
+        }
+
+        enum ChunkList: ArraySchema {
+            static let items: Schema.Type = ChunkDetail.self
+            static let description = "Chunk list"
+        }
+
+        enum ChunkNumber: IntSchema {
+            static let minimum = 0
+            static let maximum = 1000
+            static let description = "The number of the chunk"
+        }
     }
-  }
 }
