@@ -5,3 +5,5 @@ xcuserdata
 DerivedData
 .swiftpm
 openapi/openapi.yaml
+Server.swift
+Types.swift
