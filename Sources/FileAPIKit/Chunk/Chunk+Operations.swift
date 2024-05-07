@@ -64,12 +64,12 @@ extension File.Chunk {
             ]
         }
 
-        enum ChunksItemGet: Operation {
+        enum GetById: Operation {
             static let security: [SecurityScheme.Type] = .shared
             static let tag: Tag.Type = Tags.Main.self
-            static let summary = "Gets a chunk info"
+            static let summary = "Gets a chunk info by id"
             static let description = """
-                Gets a chunk info
+                Gets a chunk info by id
                 """
 
             static let responses: [OperationResponse] = [
@@ -83,7 +83,26 @@ extension File.Chunk {
             ]
         }
 
-        enum ChunkGet: Operation {
+        enum RemoveById: Operation {
+            static let security: [SecurityScheme.Type] = .shared
+            static let tag: Tag.Type = Tags.Main.self
+            static let summary = "Removes a chunk by id"
+            static let description = """
+                Removes a chunk by id
+                """
+
+            static let responses: [OperationResponse] = [
+                .noContent,
+                .badRequest,
+                .unauthorized,
+                .forbidden,
+                .notFound,
+                .unsupportedMediaType,
+                .unprocessableContent,
+            ]
+        }
+
+        enum Get: Operation {
             static let security: [SecurityScheme.Type] = .shared
             static let tag: Tag.Type = Tags.Main.self
             static let summary = "Gets a chunk info"
