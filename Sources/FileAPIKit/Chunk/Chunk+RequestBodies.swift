@@ -1,7 +1,7 @@
 import FeatherOpenAPIKit
 import OpenAPIKit
 
-extension File.Storage {
+extension File.Chunk {
 
     enum RequestBodies {
 

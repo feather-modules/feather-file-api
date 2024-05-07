@@ -1,10 +1,10 @@
 import FeatherOpenAPIKit
 
-extension File.Storage {
+extension File.Upload {
 
     enum Tags {
         enum Main: Tag {
-            static let name = "File - Storage"
+            static let name = "File - Upload"
         }
     }
 }
