@@ -26,6 +26,7 @@ extension File.Upload {
             ]
             static let post: Operation.Type? = Operations.ChunkedFinish.self
             static let delete: Operation.Type? = Operations.ChunkedAbort.self
+            static let get: Operation.Type? = Operations.Get.self
         }
     }
 }

@@ -100,5 +100,25 @@ extension File.Upload {
                 .unprocessableContent,
             ]
         }
+
+        enum Get: Operation {
+            static let security: [SecurityScheme.Type] = .shared
+            static let tag: Tag.Type = Tags.Main.self
+            static let summary = "Gets an upload detail"
+            static let description = """
+                Gets an upload detail
+                """
+
+            static let requestBody: RequestBody.Type? = RequestBodies.Upload
+                .self
+            static let responses: [OperationResponse] = [
+                .ok(Responses.ChunkedDetail.self),
+                .badRequest,
+                .unauthorized,
+                .forbidden,
+                .unsupportedMediaType,
+                .unprocessableContent,
+            ]
+        }
     }
 }
