@@ -7,11 +7,6 @@ extension File.Chunk {
         enum Main: PathItem {
             static let path: Path = File.Chunk.path / "chunks"
             static let parameters = File.Upload.PathItems.Item.parameters
-        }
-
-        enum Chunks: PathItem {
-            static let path: Path = Main.path
-            static let parameters = Main.parameters
             static let get: Operation.Type? = Operations.List.self
         }
 
