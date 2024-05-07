@@ -9,7 +9,7 @@ extension File.Chunk {
             static let description = "Chunk identifier"
             static let schema: Schema.Type = Schemas.Id.self
         }
-        
+
         enum Number: PathParameter {
             static let name = "chunkNumber"
             static let description = "The number of the chunk"

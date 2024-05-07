@@ -22,7 +22,7 @@ extension File.Upload {
             ]
             static let description = "Chunked detail"
         }
-        
+
         enum FinishChunkedDetail: ObjectSchema {
             static let properties: [ObjectSchemaProperty] = [
                 .init("resourceId", File.Resource.Schemas.Id.self)

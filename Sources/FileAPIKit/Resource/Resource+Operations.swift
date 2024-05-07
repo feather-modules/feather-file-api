@@ -81,6 +81,6 @@ extension File.Resource {
                 .unprocessableContent,
             ]
         }
-        
+
     }
 }

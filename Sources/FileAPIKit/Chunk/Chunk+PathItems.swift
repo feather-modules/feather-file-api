@@ -17,17 +17,19 @@ extension File.Chunk {
 
         enum ChunksItem: PathItem {
             static let path: Path = Chunks.path / Parameters.Id.path
-            static let parameters = [
-                Parameters.Id.self,
-            ] + Chunks.parameters
+            static let parameters =
+                [
+                    Parameters.Id.self
+                ] + Chunks.parameters
             static let get: Operation.Type? = Operations.ChunksItemGet.self
         }
-        
+
         enum Chunk: PathItem {
             static let path: Path = Main.path / "chunk" / Parameters.Number.path
-            static let parameters = [
-                Parameters.Number.self,
-            ] + Main.parameters
+            static let parameters =
+                [
+                    Parameters.Number.self
+                ] + Main.parameters
             static let post: Operation.Type? = Operations.Upload.self
             static let delete: Operation.Type? = Operations.Remove.self
             static let get: Operation.Type? = Operations.ChunkGet.self

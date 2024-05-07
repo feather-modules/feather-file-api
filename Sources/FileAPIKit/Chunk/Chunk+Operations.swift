@@ -44,7 +44,7 @@ extension File.Chunk {
                 .unprocessableContent,
             ]
         }
-        
+
         enum List: Operation {
             static let security: [SecurityScheme.Type] = .shared
             static let tag: Tag.Type = Tags.Main.self
@@ -63,7 +63,7 @@ extension File.Chunk {
                 .unprocessableContent,
             ]
         }
-        
+
         enum ChunksItemGet: Operation {
             static let security: [SecurityScheme.Type] = .shared
             static let tag: Tag.Type = Tags.Main.self
@@ -82,7 +82,7 @@ extension File.Chunk {
                 .unprocessableContent,
             ]
         }
-        
+
         enum ChunkGet: Operation {
             static let security: [SecurityScheme.Type] = .shared
             static let tag: Tag.Type = Tags.Main.self

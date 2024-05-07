@@ -14,7 +14,7 @@ extension File.Chunk {
             static let maximum = 1000
             static let description = "The number of the chunk"
         }
-        
+
         enum Detail: ObjectSchema {
             static let properties: [ObjectSchemaProperty] = [
                 .init("id", Id.self),
