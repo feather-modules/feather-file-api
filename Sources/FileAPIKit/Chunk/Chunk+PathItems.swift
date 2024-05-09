@@ -12,7 +12,7 @@ extension File.Chunk {
 
         enum Chunk: PathItem {
             static let path: Path = Main.path / Parameters.Number.path
-            static let parameters =
+            static let parameters: [Parameter.Type] =
                 [
                     Parameters.Number.self
                 ] + Main.parameters
@@ -23,7 +23,7 @@ extension File.Chunk {
 
         enum ChunkById: PathItem {
             static let path: Path = File.path / "chunks" / Parameters.Id.path
-            static let parameters =
+            static let parameters: [Parameter.Type] =
                 [
                     Parameters.Id.self
                 ]

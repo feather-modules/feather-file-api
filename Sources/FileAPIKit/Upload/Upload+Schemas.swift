@@ -1,3 +1,4 @@
+import FeatherAPIKit
 import FeatherOpenAPIKit
 import OpenAPIKit
 
@@ -30,9 +31,31 @@ extension File.Upload {
             static let description = "Chunked finish detail"
         }
 
-        enum List: ArraySchema {
-            static let items: Schema.Type = ChunkedDetail.self
+        enum List: ObjectSchema {
+
+            enum Item: ObjectSchema {
+                static let description = "Upload list item"
+                static let properties: [ObjectSchemaProperty] = ChunkedDetail
+                    .properties
+            }
+
+            enum Items: ArraySchema {
+                static let description = "Upload list items"
+                static let items: Schema.Type = Item.self
+            }
+
+            enum Sort: EnumSchema {
+                static let description = "The sort key for the list"
+                static let allowedValues = ["uploadId"]
+                static let defaultValue: String? = "uploadId"
+            }
+
             static let description = "Upload list"
+            static let properties: [ObjectSchemaProperty] =
+                [
+                    .init("items", Items.self),
+                    .init("sort", Sort.self, required: false),
+                ] + Feather.Core.Schemas.List.properties
         }
     }
 }

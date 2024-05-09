@@ -52,6 +52,10 @@ extension File.Chunk {
             static let description = """
                 Gets the chunk list
                 """
+            static let parameters: [Parameter.Type] =
+                [
+                    Parameters.List.Sort.self
+                ] + Feather.Core.Parameters.List.parameters
 
             static let responses: [OperationResponse] = [
                 .ok(Responses.List.self),

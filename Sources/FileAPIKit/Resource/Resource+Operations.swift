@@ -51,6 +51,10 @@ extension File.Resource {
             static let description = """
                 Lists the file resources
                 """
+            static let parameters: [Parameter.Type] =
+                [
+                    Parameters.List.Sort.self
+                ] + Feather.Core.Parameters.List.parameters
 
             static let responses: [OperationResponse] = [
                 .ok(Responses.List.self),

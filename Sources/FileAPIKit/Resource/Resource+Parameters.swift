@@ -14,7 +14,15 @@ extension File.Resource {
             static let name = "Range"
             static let description = "Range download request header"
             static let schema: Schema.Type = Schemas.DownloadRequestHeader.self
+            static let required = false
         }
 
+        enum List {
+            enum Sort: QueryParameter {
+                static let name = "sort"
+                static let description = "Sort by parameter"
+                static let schema: Schema.Type = Schemas.List.Sort.self
+            }
+        }
     }
 }
