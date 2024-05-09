@@ -17,7 +17,7 @@ extension File.Chunk {
                     Parameters.Number.self
                 ] + Main.parameters
             static let post: Operation.Type? = Operations.Upload.self
-            static let delete: Operation.Type? = Operations.Remove.self
+            static let delete: Operation.Type? = Operations.Delete.self
             static let get: Operation.Type? = Operations.Get.self
         }
 
@@ -28,7 +28,7 @@ extension File.Chunk {
                     Parameters.Id.self
                 ]
             static let get: Operation.Type? = Operations.GetById.self
-            static let delete: Operation.Type? = Operations.RemoveById.self
+            static let delete: Operation.Type? = Operations.DeleteById.self
         }
     }
 }

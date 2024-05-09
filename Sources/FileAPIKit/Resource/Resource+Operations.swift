@@ -25,12 +25,12 @@ extension File.Resource {
             ]
         }
 
-        enum Remove: Operation {
+        enum Delete: Operation {
             static let security: [SecurityScheme.Type] = .shared
             static let tag: Tag.Type = Tags.Main.self
-            static let summary = "Removes a file resource"
+            static let summary = "Deletes a file resource"
             static let description = """
-                Removes a file resource
+                Deletes a file resource
                 """
 
             static let responses: [OperationResponse] = [

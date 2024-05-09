@@ -24,7 +24,7 @@ extension File.Resource {
             static let parameters: [Parameter.Type] = [
                 Parameters.Id.self
             ]
-            static let delete: Operation.Type? = Operations.Remove.self
+            static let delete: Operation.Type? = Operations.Delete.self
             static let get: Operation.Type? = Operations.Get.self
         }
     }

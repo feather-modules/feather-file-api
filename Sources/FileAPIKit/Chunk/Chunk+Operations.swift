@@ -26,12 +26,12 @@ extension File.Chunk {
             ]
         }
 
-        enum Remove: Operation {
+        enum Delete: Operation {
             static let security: [SecurityScheme.Type] = .shared
             static let tag: Tag.Type = Tags.Main.self
-            static let summary = "Remove chunk"
+            static let summary = "Deletes a chunk"
             static let description = """
-                Removes a chunk
+                Deletes a chunk
                 """
 
             static let responses: [OperationResponse] = [
@@ -83,12 +83,12 @@ extension File.Chunk {
             ]
         }
 
-        enum RemoveById: Operation {
+        enum DeleteById: Operation {
             static let security: [SecurityScheme.Type] = .shared
             static let tag: Tag.Type = Tags.Main.self
-            static let summary = "Removes a chunk by id"
+            static let summary = "Deletes a chunk by id"
             static let description = """
-                Removes a chunk by id
+                Deletes a chunk by id
                 """
 
             static let responses: [OperationResponse] = [
