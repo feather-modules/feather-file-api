@@ -11,8 +11,8 @@ extension File.Chunk {
         }
 
         enum Number: IntSchema {
-            static let minimum = 1
-            static let maximum = 10000
+            static let minimumValue: Int? = 1
+            static let maximumValue: Int? = 10000
             static let description = "The number of the chunk"
         }
 
