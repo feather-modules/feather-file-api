@@ -17,9 +17,15 @@ extension File.Upload {
             static let description = "Simple detail"
         }
 
+        enum StorageId: TextSchema {
+            static let description = "Storage subsystem id"
+            static var examples: [String] = ["Any storage subsystem id format"]
+        }
+
         enum ChunkedDetail: ObjectSchema {
             static let properties: [ObjectSchemaProperty] = [
-                .init("uploadId", Id.self)
+                .init("uploadId", Id.self),
+                .init("storageId", StorageId.self),
             ]
             static let description = "Chunked detail"
         }
@@ -46,7 +52,7 @@ extension File.Upload {
 
             enum Sort: EnumSchema {
                 static let description = "The sort key for the list"
-                static let allowedValues = ["uploadId"]
+                static let allowedValues = ["uploadId", "storageId"]
                 static let defaultValue: String? = "uploadId"
             }
 

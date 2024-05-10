@@ -113,8 +113,6 @@ extension File.Upload {
                 Gets an upload detail
                 """
 
-            static let requestBody: RequestBody.Type? = RequestBodies.Upload
-                .self
             static let responses: [OperationResponse] = [
                 .ok(Responses.ChunkedDetail.self),
                 .badRequest,
