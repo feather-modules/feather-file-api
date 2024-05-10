@@ -1,31 +1,11 @@
 import FeatherAPIKit
 import FeatherOpenAPIKit
 
-extension File.Storage {
+extension File.Upload {
 
     enum Operations {
 
-        enum Download: Operation {
-            static let security: [SecurityScheme.Type] = .shared
-            static let tag: Tag.Type = Tags.Main.self
-            static let summary = "Download a file"
-            static let description = """
-                Download a file
-                """
-            static var parameters: [Parameter.Type] = [
-                Parameters.DownloadRequestHeader.self
-            ]
-            static let responses: [OperationResponse] = [
-                .ok(Responses.Download.self),
-                .badRequest,
-                .unauthorized,
-                .forbidden,
-                .unsupportedMediaType,
-                .unprocessableContent,
-            ]
-        }
-
-        enum SimpleUpload: Operation {
+        enum Simple: Operation {
             static let security: [SecurityScheme.Type] = .shared
             static let tag: Tag.Type = Tags.Main.self
             static let summary = "Upload a file"
@@ -45,7 +25,7 @@ extension File.Storage {
             ]
         }
 
-        enum ChunkedUpload: Operation {
+        enum Chunked: Operation {
             static let security: [SecurityScheme.Type] = .shared
             static let tag: Tag.Type = Tags.Main.self
             static let summary = "Creates a chunked upload"
@@ -54,47 +34,7 @@ extension File.Storage {
                 """
 
             static let responses: [OperationResponse] = [
-                .ok(Responses.UploadChunkedDetail.self),
-                .badRequest,
-                .unauthorized,
-                .forbidden,
-                .notFound,
-                .unsupportedMediaType,
-                .unprocessableContent,
-            ]
-        }
-
-        enum ChunkedUploadChunk: Operation {
-            static let security: [SecurityScheme.Type] = .shared
-            static let tag: Tag.Type = Tags.Main.self
-            static let summary = "Upload chunk"
-            static let description = """
-                Upload a chunk data
-                """
-
-            static let requestBody: RequestBody.Type? = RequestBodies.Upload
-                .self
-            static let responses: [OperationResponse] = [
-                .ok(Responses.ChunkDetail.self),
-                .badRequest,
-                .unauthorized,
-                .forbidden,
-                .notFound,
-                .unsupportedMediaType,
-                .unprocessableContent,
-            ]
-        }
-
-        enum ChunkedRemoveChunk: Operation {
-            static let security: [SecurityScheme.Type] = .shared
-            static let tag: Tag.Type = Tags.Main.self
-            static let summary = "Remove chunk"
-            static let description = """
-                Removes a chunk
-                """
-
-            static let responses: [OperationResponse] = [
-                .noContent,
+                .ok(Responses.ChunkedDetail.self),
                 .badRequest,
                 .unauthorized,
                 .forbidden,
@@ -142,16 +82,20 @@ extension File.Storage {
             ]
         }
 
-        enum UploadList: Operation {
+        enum List: Operation {
             static let security: [SecurityScheme.Type] = .shared
             static let tag: Tag.Type = Tags.Main.self
             static let summary = "Gets the upload list"
             static let description = """
                 Gets the upload list
                 """
+            static let parameters: [Parameter.Type] =
+                [
+                    Parameters.List.Sort.self
+                ] + Feather.Core.Parameters.List.parameters
 
             static let responses: [OperationResponse] = [
-                .ok(Responses.UploadList.self),
+                .ok(Responses.List.self),
                 .badRequest,
                 .unauthorized,
                 .forbidden,
@@ -161,24 +105,22 @@ extension File.Storage {
             ]
         }
 
-        enum ChunkList: Operation {
+        enum Get: Operation {
             static let security: [SecurityScheme.Type] = .shared
             static let tag: Tag.Type = Tags.Main.self
-            static let summary = "Gets the chunk list"
+            static let summary = "Gets an upload detail"
             static let description = """
-                Gets the chunk list
+                Gets an upload detail
                 """
 
             static let responses: [OperationResponse] = [
-                .ok(Responses.ChunkList.self),
+                .ok(Responses.ChunkedDetail.self),
                 .badRequest,
                 .unauthorized,
                 .forbidden,
-                .notFound,
                 .unsupportedMediaType,
                 .unprocessableContent,
             ]
         }
-
     }
 }

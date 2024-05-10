@@ -1,0 +1,34 @@
+import FeatherOpenAPIKit
+
+extension File.Chunk {
+
+    enum PathItems {
+
+        enum Main: PathItem {
+            static let path: Path = File.Chunk.path / "chunks"
+            static let parameters = File.Upload.PathItems.Item.parameters
+            static let get: Operation.Type? = Operations.List.self
+        }
+
+        enum Chunk: PathItem {
+            static let path: Path = Main.path / Parameters.Number.path
+            static let parameters: [Parameter.Type] =
+                [
+                    Parameters.Number.self
+                ] + Main.parameters
+            static let post: Operation.Type? = Operations.Upload.self
+            static let delete: Operation.Type? = Operations.Delete.self
+            static let get: Operation.Type? = Operations.Get.self
+        }
+
+        enum ChunkById: PathItem {
+            static let path: Path = File.path / "chunks" / Parameters.Id.path
+            static let parameters: [Parameter.Type] =
+                [
+                    Parameters.Id.self
+                ]
+            static let get: Operation.Type? = Operations.GetById.self
+            static let delete: Operation.Type? = Operations.DeleteById.self
+        }
+    }
+}
