@@ -20,7 +20,7 @@ extension File.Upload {
         }
 
         enum Item: PathItem {
-            static let path: Path = Main.path / Parameters.Id.path
+            static let path: Path = Chunked.path / Parameters.Id.path
             static let parameters: [Parameter.Type] = [
                 Parameters.Id.self
             ]
