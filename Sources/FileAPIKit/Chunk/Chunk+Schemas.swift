@@ -4,11 +4,7 @@ import OpenAPIKit
 
 extension File.Chunk {
 
-    enum Schemas {
-
-        enum Id: IDSchema {
-            static let description = "Chunk identifier"
-        }
+    public enum Schemas {
 
         enum Number: IntSchema {
             static let minimumValue: Int? = 1
@@ -16,17 +12,10 @@ extension File.Chunk {
             static let description = "The number of the chunk"
         }
 
-        enum StorageId: TextSchema {
-            static let description = "Storage subsystem id"
-            static var examples: [String] = ["Any storage subsystem id format"]
-        }
-
         enum Detail: ObjectSchema {
             static let properties: [ObjectSchemaProperty] = [
-                .init("id", Id.self),
                 .init("uploadId", File.Upload.Schemas.Id.self),
-                .init("chunkNumber", Number.self),
-                .init("storageId", StorageId.self),
+                .init("number", Number.self),
             ]
             static let description = "Chunk detail"
         }
@@ -47,9 +36,9 @@ extension File.Chunk {
             enum Sort: EnumSchema {
                 static let description = "The sort key for the list"
                 static let allowedValues = [
-                    "id", "uploadId", "chunkNumber", "storageId",
+                    "uploadId", "number",
                 ]
-                static let defaultValue: String? = "chunkNumber"
+                static let defaultValue: String? = "number"
             }
 
             static let description = "Chunk list"

@@ -3,7 +3,7 @@ import FeatherOpenAPIKit
 
 extension File.Upload {
 
-    enum Operations {
+    public enum Operations {
 
         enum Simple: Operation {
             static let security: [SecurityScheme.Type] = .shared

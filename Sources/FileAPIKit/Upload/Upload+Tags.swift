@@ -2,7 +2,7 @@ import FeatherOpenAPIKit
 
 extension File.Upload {
 
-    enum Tags {
+    public enum Tags {
         enum Main: Tag {
             static let name = "File - Upload"
         }

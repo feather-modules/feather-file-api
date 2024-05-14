@@ -2,10 +2,10 @@ import FeatherOpenAPIKit
 
 extension File.Resource {
 
-    enum Parameters {
+    public enum Parameters {
 
         enum Id: PathParameter {
-            static let name = "resourceId"
+            static let name = "id"
             static let description = "Resource identifier"
             static let schema: Schema.Type = Schemas.Id.self
         }

@@ -3,7 +3,7 @@ import OpenAPIKit
 
 extension File.Resource {
 
-    enum Responses {
+    public enum Responses {
 
         enum Download: BinaryResponse {
             static let description = "Download response"

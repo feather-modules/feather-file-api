@@ -2,7 +2,7 @@ import FeatherOpenAPIKit
 
 extension File.Resource {
 
-    enum PathItems {
+    public enum PathItems {
 
         enum Main: PathItem {
             static let path: Path = File.Resource.path
@@ -11,7 +11,7 @@ extension File.Resource {
 
         enum Download: PathItem {
             static let path: Path =
-                Main.path / "download" / Parameters.Id.path
+                Main.path / Parameters.Id.path / "download"
             static let parameters: [Parameter.Type] = [
                 Parameters.Id.self
             ]

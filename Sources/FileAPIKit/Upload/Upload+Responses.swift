@@ -3,7 +3,7 @@ import OpenAPIKit
 
 extension File.Upload {
 
-    enum Responses {
+    public enum Responses {
 
         enum SimpleDetail: JSONResponse {
             static let description = "Simple upload detail object"

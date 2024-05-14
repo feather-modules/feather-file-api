@@ -2,7 +2,7 @@ import FeatherOpenAPIKit
 
 extension File.Chunk {
 
-    enum PathItems {
+    public enum PathItems {
 
         enum Main: PathItem {
             static let path: Path = File.Chunk.path / "chunks"
@@ -19,16 +19,6 @@ extension File.Chunk {
             static let post: Operation.Type? = Operations.Upload.self
             static let delete: Operation.Type? = Operations.Delete.self
             static let get: Operation.Type? = Operations.Get.self
-        }
-
-        enum ChunkById: PathItem {
-            static let path: Path = File.path / "chunks" / Parameters.Id.path
-            static let parameters: [Parameter.Type] =
-                [
-                    Parameters.Id.self
-                ]
-            static let get: Operation.Type? = Operations.GetById.self
-            static let delete: Operation.Type? = Operations.DeleteById.self
         }
     }
 }
