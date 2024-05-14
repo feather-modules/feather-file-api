@@ -2,7 +2,7 @@ import FeatherOpenAPIKit
 
 extension File.Upload {
 
-    enum PathItems {
+    public enum PathItems {
 
         enum Main: PathItem {
             static let path: Path = File.Upload.path

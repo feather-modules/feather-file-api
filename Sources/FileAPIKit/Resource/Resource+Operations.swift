@@ -3,7 +3,7 @@ import FeatherOpenAPIKit
 
 extension File.Resource {
 
-    enum Operations {
+    public enum Operations {
 
         enum Download: Operation {
             static let security: [SecurityScheme.Type] = .shared

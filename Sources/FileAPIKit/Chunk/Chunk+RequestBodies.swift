@@ -3,7 +3,7 @@ import OpenAPIKit
 
 extension File.Chunk {
 
-    enum RequestBodies {
+    public enum RequestBodies {
 
         enum Upload: BinaryBody {
             static let contentType: OpenAPI.ContentType = .any

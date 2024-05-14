@@ -2,10 +2,10 @@ import FeatherOpenAPIKit
 
 extension File.Upload {
 
-    enum Parameters {
+    public enum Parameters {
 
         enum Id: PathParameter {
-            static let name = "uploadId"
+            static let name = "id"
             static let description = "Upload identifier"
             static let schema: Schema.Type = Schemas.Id.self
         }

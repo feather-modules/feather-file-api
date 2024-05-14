@@ -4,7 +4,7 @@ import OpenAPIKit
 
 extension File.Resource {
 
-    enum Schemas {
+    public enum Schemas {
 
         enum Id: IDSchema {
             static let description = "File resource identifier"
@@ -23,7 +23,7 @@ extension File.Resource {
 
         enum Detail: ObjectSchema {
             static let properties: [ObjectSchemaProperty] = [
-                .init("resourceId", Id.self),
+                .init("id", Id.self),
                 .init("sizeInBytes", SizeInBytes.self),
             ]
             static let description = "File resource detail"
@@ -44,7 +44,7 @@ extension File.Resource {
 
             enum Sort: EnumSchema {
                 static let description = "The sort key for the list"
-                static let allowedValues = ["resourceId", "sizeInBytes"]
+                static let allowedValues = ["id", "sizeInBytes"]
                 static let defaultValue: String? = "sizeInBytes"
             }
 

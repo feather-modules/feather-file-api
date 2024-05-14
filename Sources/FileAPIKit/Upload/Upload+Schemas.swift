@@ -4,7 +4,7 @@ import OpenAPIKit
 
 extension File.Upload {
 
-    enum Schemas {
+    public enum Schemas {
 
         enum Id: IDSchema {
             static let description = "Upload identifier"
@@ -17,15 +17,14 @@ extension File.Upload {
             static let description = "Simple detail"
         }
 
-        enum StorageId: TextSchema {
-            static let description = "Storage subsystem id"
-            static var examples: [String] = ["Any storage subsystem id format"]
+        enum ResourceId: IDSchema {
+            static let description = "To be live ID for resource after upload"
         }
 
         enum ChunkedDetail: ObjectSchema {
             static let properties: [ObjectSchemaProperty] = [
-                .init("uploadId", Id.self),
-                .init("storageId", StorageId.self),
+                .init("id", Id.self),
+                .init("resourceId", ResourceId.self),
             ]
             static let description = "Chunked detail"
         }
@@ -52,8 +51,8 @@ extension File.Upload {
 
             enum Sort: EnumSchema {
                 static let description = "The sort key for the list"
-                static let allowedValues = ["uploadId", "storageId"]
-                static let defaultValue: String? = "uploadId"
+                static let allowedValues = ["id", "resourceId"]
+                static let defaultValue: String? = "id"
             }
 
             static let description = "Upload list"

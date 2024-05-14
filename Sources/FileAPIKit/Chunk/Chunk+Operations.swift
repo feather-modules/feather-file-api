@@ -3,7 +3,7 @@ import FeatherOpenAPIKit
 
 extension File.Chunk {
 
-    enum Operations {
+    public enum Operations {
 
         enum Upload: Operation {
             static let security: [SecurityScheme.Type] = .shared

@@ -3,6 +3,6 @@ import OpenAPIKit
 
 extension File.Resource {
 
-    enum RequestBodies {
+    public enum RequestBodies {
     }
 }

@@ -3,7 +3,7 @@ import OpenAPIKit
 
 extension File.Chunk {
 
-    enum Responses {
+    public enum Responses {
 
         enum Detail: JSONResponse {
             static let description = "Chunk detail object"
